@@ -4,6 +4,17 @@ import { fetchBasicUserPosts, fetchUserPosts } from "@/lib/instagram";
 
 const CACHE_TTL = 60 * 60 * 24;
 
+const NICHE_KEYWORDS: Record<string, string[]> = {
+  Tech: ["engineering", "software", "coding", "programming", "ai", "gadgets"],
+  Beauty: ["cosmetics", "makeup", "skincare", "haircare", "beauty", "wellness"],
+  Fitness: ["workout", "gym", "exercise", "nutrition", "yoga", "health"],
+  Food: ["cooking", "recipes", "baking", "restaurant", "food", "cuisine"],
+  Fashion: ["clothing", "shoes", "accessories", "style", "sneakers", "fashion"],
+  Travel: ["vacation", "destinations", "hotels", "travel", "wanderlust"],
+  Finance: ["investing", "stocks", "crypto", "savings", "finance", "trading"],
+  Gaming: ["esports", "streams", "gaming", "console", "mobile gaming"],
+};
+
 async function getRedis() {
   try {
     const { Redis } = await import("@upstash/redis");
@@ -49,11 +60,15 @@ export async function POST(
     const fullName = user_data.full_name || null;
     const followingCount = user_data.following_count ?? null;
     const mediaCount = user_data.media_count ?? null;
+    const niche = "Lifestyle";
+    const keywords = NICHE_KEYWORDS[niche]?.slice(0, 5).join(", ") || "";
 
     const creator = await prisma.creator.upsert({
       where: { username },
       update: {
         instagramId: user_data.pk,
+        niche,
+        keywords,
         followers,
         avgLikes,
         avgComments,
@@ -68,7 +83,8 @@ export async function POST(
       create: {
         instagramId: user_data.pk,
         username,
-        niche: "Lifestyle",
+        niche,
+        keywords,
         followers,
         avgLikes,
         avgComments,
