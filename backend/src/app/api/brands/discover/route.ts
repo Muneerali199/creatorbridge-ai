@@ -13,9 +13,21 @@ function computeNicheFit(
   creatorNiche: string,
   creatorKeywords: string,
 ): number {
-  if (brandNiche && brandNiche === creatorNiche) return 100;
+  const hasKeywords = brandKeywords.length > 0;
 
-  if (brandKeywords.length > 0 && creatorKeywords) {
+  if (brandNiche && brandNiche === creatorNiche) {
+    if (!hasKeywords) return 100;
+    if (creatorKeywords) {
+      const ck = creatorKeywords.toLowerCase().split(",").map((k) => k.trim());
+      const match = brandKeywords.some((bk) =>
+        ck.some((ckw) => ckw.includes(bk) || bk.includes(ckw)),
+      );
+      if (match) return 100;
+    }
+    return 70;
+  }
+
+  if (hasKeywords && creatorKeywords) {
     const ck = creatorKeywords.toLowerCase().split(",").map((k) => k.trim());
     const match = brandKeywords.some((bk) =>
       ck.some((ckw) => ckw.includes(bk) || bk.includes(ckw)),
