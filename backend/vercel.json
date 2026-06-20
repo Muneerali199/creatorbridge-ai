@@ -1,0 +1,18 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/refresh-creators",
+      "schedule": "0 3 * * *"
+    }
+  ],
+  "functions": {
+    "api/cron/refresh-creators/route.ts": {
+      "memory": 256,
+      "maxDuration": 60
+    },
+    "api/creators/sync/[username]/route.ts": {
+      "memory": 256,
+      "maxDuration": 30
+    }
+  }
+}

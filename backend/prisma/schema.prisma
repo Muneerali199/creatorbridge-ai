@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Creator {
+  id            String   @id @default(cuid())
+  instagramId   String?  @unique
+  username      String   @unique
+  niche         String
+  followers     Int
+  avgLikes      Int
+  avgComments   Int
+  postsPerWeek  Int
+  trueScore     Int?
+  fraudRisk     Int?
+  mlFraudScore  Int?
+  authenticity  Int?
+  profilePic   String?
+  followingCount Int?
+  fullName     String?
+  mediaCount   Int?
+  keywords      String?
+  source        String   @default("manual")
+  lastSyncedAt  DateTime?
+  createdAt     DateTime @default(now())
+
+  deals         Deal[]
+  scoreHistory  ScoreHistory[]
+}
+
+model Brand {
+  id          String   @id @default(cuid())
+  name        String
+  email       String   @unique
+  budgetRange String
+  nicheFocus  String
+  createdAt   DateTime @default(now())
+
+  deals       Deal[]
+}
+
+model Deal {
+  id           String   @id @default(cuid())
+  creatorId    String
+  brandId      String
+  status       String   @default("drafted")
+  fee          Int
+  deliverables String
+  createdAt    DateTime @default(now())
+
+  creator      Creator  @relation(fields: [creatorId], references: [id])
+  brand        Brand    @relation(fields: [brandId], references: [id])
+}
+
+model ScoreHistory {
+  id         String   @id @default(cuid())
+  creatorId  String
+  trueScore  Int
+  fraudRisk  Int
+  computedAt DateTime @default(now())
+
+  creator    Creator  @relation(fields: [creatorId], references: [id])
+}

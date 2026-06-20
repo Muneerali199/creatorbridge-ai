@@ -15,6 +15,7 @@ import {
   Bell,
   ChevronLeft,
 } from 'lucide-react';
+import { useSearch } from '../lib/SearchContext';
 
 const navItems = [
   { label: 'TrueScore', icon: Gauge, path: '/dashboard/truescore' },
@@ -22,7 +23,7 @@ const navItems = [
   { label: 'ROI Forecast', icon: TrendingUp, path: '/dashboard/roi' },
   { label: 'DealMatch', icon: Handshake, path: '/dashboard/dealmatch' },
   { label: 'Value Calculator', icon: Calculator, path: '/dashboard/calculator' },
-  { label: 'Commerce Bridge', icon: ShoppingCart, path: '/dashboard/commerce' },
+  { label: 'Brand Discovery', icon: ShoppingCart, path: '/dashboard/commerce' },
 ];
 
 const bottomItems = [
@@ -33,6 +34,7 @@ const bottomItems = [
 export default function DashboardLayout() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { query, setQuery } = useSearch();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -130,6 +132,8 @@ export default function DashboardLayout() {
             <Search className="w-4 h-4 text-[#9b8ec7]" />
             <input
               type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
               placeholder="Search creators..."
               className="bg-transparent text-sm text-[#f0e6ff] placeholder-[#9b8ec7] outline-none w-48"
             />
