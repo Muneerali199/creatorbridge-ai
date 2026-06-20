@@ -60,7 +60,11 @@ export async function POST(
     const fullName = user_data.full_name || null;
     const followingCount = user_data.following_count ?? null;
     const mediaCount = user_data.media_count ?? null;
-    const niche = "Lifestyle";
+    const textToMatch = `${fullName || ""} ${username}`.toLowerCase();
+    const detectedNiche = Object.entries(NICHE_KEYWORDS).find(([, kws]) =>
+      kws.some((kw) => textToMatch.includes(kw)),
+    )?.[0] || "Lifestyle";
+    const niche = detectedNiche;
     const keywords = NICHE_KEYWORDS[niche]?.slice(0, 5).join(", ") || "";
 
     const creator = await prisma.creator.upsert({
