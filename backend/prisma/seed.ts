@@ -42,7 +42,8 @@ async function seed() {
     const trueScore = calculateTrueScore(er, c.authenticity, c.postsPerWeek, c.followers);
     const fraudRisk = calculateFraudRisk(er, c.followers);
     const fraudRiskNum = fraudRisk.risk === "high" ? 2 : fraudRisk.risk === "moderate" ? 1 : 0;
-    const mlFraudScore = computeMLFraudFromInstagram(c.followers, Math.round(c.followers * 0.3), "", true, c.avgLikes, c.username, c.username, null);
+    const estimatedTotalPosts = c.postsPerWeek * 52;
+    const mlFraudScore = computeMLFraudFromInstagram(c.followers, Math.round(c.followers * 0.3), "", true, estimatedTotalPosts, c.username, c.username, null);
     const keywords = NICHE_KEYWORDS[c.niche]?.slice(0, 5).join(", ") || "";
 
     const creator = await prisma.creator.upsert({
