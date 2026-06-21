@@ -7,6 +7,7 @@ import {
   Handshake,
   Calculator,
   ShoppingCart,
+  CreditCard,
   Settings,
   HelpCircle,
   Menu,
@@ -27,6 +28,7 @@ const navItems = [
 ];
 
 const bottomItems = [
+  { label: 'Pricing', icon: CreditCard, path: '/pricing' },
   { label: 'Settings', icon: Settings, path: '#' },
   { label: 'Help', icon: HelpCircle, path: '#' },
 ];
@@ -95,6 +97,7 @@ export default function DashboardLayout() {
           {bottomItems.map((item) => (
             <button
               key={item.label}
+              onClick={() => navigate(item.path)}
               className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-[#9b8ec7] hover:bg-[#2a2348]/50 hover:text-[#f0e6ff] transition-all"
             >
               <item.icon className="w-5 h-5" />
