@@ -37,7 +37,9 @@ export default function ValueCalculatorPage() {
     valuation: { basePrice: 0, rangeLow: 0, rangeHigh: 0, engagementMultiplier: 0, authenticityMultiplier: 0, nicheRate: 0 },
   } : presetCreator;
 
-  const value = useMemo(() => calculateCreatorValue(creator), [creator]);
+  const value = useMemo(() => calculateCreatorValue(
+    creator.followers, creator.engagementRate, creator.authenticityScore, creator.niche
+  ), [creator]);
 
   if (loading) {
     return <div className="flex items-center justify-center h-64"><div className="animate-spin w-8 h-8 rounded-full border-2 border-[#ff6b8a] border-t-transparent" /></div>;

@@ -28,12 +28,23 @@ export default function DealMatchPage() {
   const results = useMemo(() => {
     return creators
       .filter((c) => tiers.length === 0 || tiers.includes(getFollowerTier(c.followers)))
-      .map((c) => calculateDealMatchScore(c, filters))
+      .map((c) => {
+        const brandNiche = niches.length === 1 ? niches[0] : c.niche;
+        return calculateDealMatchScore(
+          c.followers, c.engagementRate, c.authenticityScore,
+          brandNiche, c.niche, minBudget, maxBudget,
+        );
+      })
       .sort((a, b) => b.compositeScore - a.compositeScore);
   }, [creators, filters]);
 
   const selectedResult = results.find((r) => r.creator.id === selectedCreatorId);
-  const selectedValue = selectedResult ? calculateCreatorValue(selectedResult.creator) : null;
+  const selectedValue = selectedResult ? calculateCreatorValue(
+    selectedResult.creator.followers,
+    selectedResult.creator.engagementRate,
+    selectedResult.creator.authenticityScore,
+    selectedResult.creator.niche,
+  ) : null;
   const selectedTier = selectedResult ? getFollowerTier(selectedResult.creator.followers) : null;
 
   const toggleNiche = (n: Niche) => setNiches((p) => p.includes(n) ? p.filter((x) => x !== n) : [...p, n]);
