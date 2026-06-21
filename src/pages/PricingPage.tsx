@@ -8,11 +8,11 @@ const plans = [
     icon: Sparkles,
     price: '₹99',
     period: '/month',
-    description: 'For individual creators and small brands',
+    description: 'For small brands & startups',
     features: [
-      'TrueScore Engine — 50 scans/mo',
-      'FraudShield detection',
-      'Basic brand discovery',
+      'TrueScore Engine — 50 creator scans/mo',
+      'FraudShield basic detection',
+      'Brand discovery (1 niche)',
       'ROI forecast (3 campaigns)',
       'Email support',
     ],
@@ -24,14 +24,14 @@ const plans = [
     icon: Crown,
     price: '₹299',
     period: '/month',
-    description: 'For growing brands and agencies',
+    description: 'For growing brands & marketing teams',
     features: [
       'Unlimited TrueScore scans',
-      'FraudShield + ML analysis',
+      'FraudShield + ML deep analysis',
       'Full brand discovery + keywords',
       'Unlimited ROI forecasts',
       'DealMatch (50 creators/mo)',
-      'Value calculator',
+      'Value calculator & price benchmarks',
       'Priority support',
     ],
     cta: 'Go Pro',
@@ -43,7 +43,7 @@ const plans = [
     icon: Building2,
     price: '₹999',
     period: '/month',
-    description: 'For agencies managing multiple brands',
+    description: 'For agencies & enterprise teams',
     features: [
       'Everything in Pro',
       'Unlimited creator matches',
@@ -103,7 +103,7 @@ export default function PricingPage() {
             Built for India. Priced for India.
           </h1>
           <p className="mt-4 text-lg max-w-xl mx-auto" style={{ color: '#9b8ec7' }}>
-            Creator intelligence starting at just ₹99/mo — less than the cost of one cup of chai ☕
+            Brand intelligence tools starting at just ₹99/mo — less than a cup of chai ☕
           </p>
         </motion.div>
 
