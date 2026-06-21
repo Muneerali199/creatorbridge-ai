@@ -5,12 +5,12 @@ const SEED_CREATORS = [
   // ── Tech ──
   { username: "tanaypratap", niche: "Tech", followers: 185000, avgLikes: 5200, avgComments: 380, postsPerWeek: 4, fullName: "Tanay Pratap", keywords: "coding, software, webdev, react, javascript" },
   { username: "akshaymarch7", niche: "Tech", followers: 92000, avgLikes: 3100, avgComments: 210, postsPerWeek: 5, fullName: "Akshay Saini", keywords: "javascript, frontend, react, nodejs, interview" },
-  { username: "harkirat1", niche: "Tech", followers: 45000, avgLikes: 1800, avgComments: 140, postsPerWeek: 3, fullName: "Harkirat Singh", keywords: "coding, programming, blockchain, web3, ai" },
+  { username: "harkiratsingh1", niche: "Tech", followers: 45000, avgLikes: 1800, avgComments: 140, postsPerWeek: 3, fullName: "Harkirat Singh", keywords: "coding, programming, blockchain, web3, ai" },
   { username: "piyushgargdev", niche: "Tech", followers: 28000, avgLikes: 1200, avgComments: 95, postsPerWeek: 4, fullName: "Piyush Garg", keywords: "backend, nodejs, mongodb, devops, cloud" },
   { username: "lovebabbar", niche: "Tech", followers: 210000, avgLikes: 6800, avgComments: 520, postsPerWeek: 3, fullName: "Love Babbar", keywords: "dsa, cpp, placement, coding, engineering" },
-  { username: "devwithjay", niche: "Tech", followers: 3200, avgLikes: 180, avgComments: 25, postsPerWeek: 5, fullName: "Jay Sharma", keywords: "coding, react, tailwind, frontend, ui" },
-  { username: "codewithkritika", niche: "Tech", followers: 1800, avgLikes: 110, avgComments: 18, postsPerWeek: 4, fullName: "Kritika Gupta", keywords: "python, django, backend, coding, internship" },
-  { username: "hackwitharnav", niche: "Tech", followers: 750, avgLikes: 65, avgComments: 12, postsPerWeek: 3, fullName: "Arnav Mehta", keywords: "cybersecurity, hacking, linux, networking, ctf" },
+  { username: "twinkalgarg", niche: "Tech", followers: 6500, avgLikes: 380, avgComments: 55, postsPerWeek: 4, fullName: "Twinkal Garg", keywords: "coding, react, frontend, ui, webdev" },
+  { username: "kritikatech", niche: "Tech", followers: 2800, avgLikes: 160, avgComments: 25, postsPerWeek: 5, fullName: "Kritika Gupta", keywords: "python, django, backend, coding, internship" },
+  { username: "arnavcyber", niche: "Tech", followers: 1200, avgLikes: 85, avgComments: 15, postsPerWeek: 3, fullName: "Arnav Mehta", keywords: "cybersecurity, hacking, linux, networking, ctf" },
 
   // ── Beauty ──
   { username: "kushakapila", niche: "Beauty", followers: 580000, avgLikes: 28000, avgComments: 1800, postsPerWeek: 5, fullName: "Kusha Kapila", keywords: "makeup, skincare, beauty, cosmetics, haircare" },
