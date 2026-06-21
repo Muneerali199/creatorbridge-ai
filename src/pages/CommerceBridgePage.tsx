@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import {
   Search,
   Handshake,
@@ -36,7 +35,6 @@ interface CreatorResult {
 }
 
 export default function CommerceBridgePage() {
-  const navigate = useNavigate();
   const [brandName, setBrandName] = useState('');
   const [brandNiche, setBrandNiche] = useState('');
   const [brandKeywords, setBrandKeywords] = useState('');
@@ -259,7 +257,7 @@ export default function CommerceBridgePage() {
                     transition={{ delay: idx * 0.05 }}
                     className="card-surface p-5 hover:border-[#7c3aed]/50 transition-all duration-200 cursor-pointer group"
                     style={{ borderColor: '#2a2348' }}
-                    onClick={() => navigate(`/dashboard/truescore?creator=${creator.username}`)}
+                    onClick={() => window.open(`https://instagram.com/${creator.username}`, '_blank')}
                   >
                     {/* Header */}
                     <div className="flex items-center gap-3 mb-4">
