@@ -4,6 +4,23 @@ import { Check, Zap, Star, Building2, ArrowRight, Crown, Sparkles } from 'lucide
 
 const plans = [
   {
+    name: 'Creator',
+    icon: Star,
+    price: '₹49',
+    period: '/month',
+    description: 'For individual creators & influencers',
+    features: [
+      'Your personal TrueScore & analytics',
+      'FraudShield self-check',
+      'Brand discovery & deal alerts',
+      'Value calculator (know your worth)',
+      'Profile page for brands',
+      'Email support',
+    ],
+    cta: 'Join Free',
+    featured: false,
+  },
+  {
     name: 'Starter',
     icon: Sparkles,
     price: '₹99',
@@ -59,13 +76,14 @@ const plans = [
 ];
 
 const comparisons = [
-  { feature: 'TrueScore Scans', starter: '50/mo', pro: 'Unlimited', agency: 'Unlimited' },
-  { feature: 'Fraud Detection', starter: 'Basic', pro: 'ML + Heuristic', agency: 'ML + Heuristic' },
-  { feature: 'Brand Discovery', starter: 'Basic', pro: 'Full + Keywords', agency: 'Full + Keywords' },
-  { feature: 'Creator Matches', starter: '10/mo', pro: '50/mo', agency: 'Unlimited' },
-  { feature: 'API Access', starter: '—', pro: '—', agency: '5K calls/mo' },
-  { feature: 'Team Seats', starter: '1', pro: '1', agency: '5' },
-  { feature: 'Support', starter: 'Email', pro: 'Priority', agency: 'Dedicated manager' },
+  { feature: 'Target Audience', creator: 'Individual creators', starter: 'Small brands', pro: 'Growing brands', agency: 'Agencies' },
+  { feature: 'TrueScore Scans', creator: 'Your own score', starter: '50/mo', pro: 'Unlimited', agency: 'Unlimited' },
+  { feature: 'Fraud Detection', creator: 'Self-check', starter: 'Basic', pro: 'ML + Heuristic', agency: 'ML + Heuristic' },
+  { feature: 'Brand Discovery', creator: 'Basic', starter: 'Basic', pro: 'Full + Keywords', agency: 'Full + Keywords' },
+  { feature: 'Creator Matches', creator: '—', starter: '10/mo', pro: '50/mo', agency: 'Unlimited' },
+  { feature: 'API Access', creator: '—', starter: '—', pro: '—', agency: '5K calls/mo' },
+  { feature: 'Team Seats', creator: '1', starter: '1', pro: '1', agency: '5' },
+  { feature: 'Support', creator: 'Email', starter: 'Email', pro: 'Priority', agency: 'Dedicated manager' },
 ];
 
 export default function PricingPage() {
@@ -103,11 +121,11 @@ export default function PricingPage() {
             Built for India. Priced for India.
           </h1>
           <p className="mt-4 text-lg max-w-xl mx-auto" style={{ color: '#9b8ec7' }}>
-            Brand intelligence tools starting at just ₹99/mo — less than a cup of chai ☕
+            For creators (₹49), brands (₹99), and agencies (₹999) — priced for India 🇮🇳
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-20">
+        <div className="grid md:grid-cols-4 gap-6 mb-20">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -176,18 +194,20 @@ export default function PricingPage() {
               <thead>
                 <tr className="border-b" style={{ borderColor: '#2a2348' }}>
                   <th className="text-left py-3 pr-4 text-[#9b8ec7] font-medium">Feature</th>
-                  <th className="text-center py-3 px-4 text-[#f0e6ff] font-semibold">Starter</th>
-                  <th className="text-center py-3 px-4 text-[#ff6b8a] font-semibold">Pro</th>
-                  <th className="text-center py-3 pl-4 text-[#f0e6ff] font-semibold">Agency</th>
+                  <th className="text-center py-3 px-2 text-[#fbbf24] font-semibold text-xs">Creator</th>
+                  <th className="text-center py-3 px-2 text-[#f0e6ff] font-semibold">Starter</th>
+                  <th className="text-center py-3 px-2 text-[#ff6b8a] font-semibold">Pro</th>
+                  <th className="text-center py-3 pl-2 text-[#f0e6ff] font-semibold">Agency</th>
                 </tr>
               </thead>
               <tbody>
                 {comparisons.map((row, i) => (
                   <tr key={row.feature} className="border-b" style={{ borderColor: '#2a2348' }}>
-                    <td className="py-3 pr-4 text-[#f0e6ff]">{row.feature}</td>
-                    <td className="text-center py-3 px-4 text-[#9b8ec7]">{row.starter}</td>
-                    <td className="text-center py-3 px-4 text-white">{row.pro}</td>
-                    <td className="text-center py-3 pl-4 text-[#9b8ec7]">{row.agency}</td>
+                    <td className="py-3 pr-4 text-[#f0e6ff] text-xs">{row.feature}</td>
+                    <td className="text-center py-3 px-2 text-[#fbbf24] text-xs">{row.creator}</td>
+                    <td className="text-center py-3 px-2 text-[#9b8ec7] text-xs">{row.starter}</td>
+                    <td className="text-center py-3 px-2 text-white text-xs">{row.pro}</td>
+                    <td className="text-center py-3 pl-2 text-[#9b8ec7] text-xs">{row.agency}</td>
                   </tr>
                 ))}
               </tbody>
